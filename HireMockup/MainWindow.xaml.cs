@@ -23,11 +23,11 @@ namespace HireMockup
         //List<Author> AuthorList = new List<Author>();
         List<HireItem> HireList = new List<HireItem>();
         List<Customer> CustomerList = new List<Customer>();
+        public double dailyRate;
 
         public MainWindow()
         {
-            InitializeComponent();
-
+            InitializeComponent();        
             HireItem item1 = new HireItem()
             {
                 HireID = "C105X",
@@ -92,5 +92,42 @@ namespace HireMockup
         {
             lbx_homePage.ItemsSource = CustomerList;
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            tbctrl_main.SelectedIndex = 1;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            if(string.IsNullOrEmpty(txtbox_newHireID.Text) || string.IsNullOrEmpty(txtbox_newHireName.Text) || string.IsNullOrEmpty(txtbox_newDailyRate.Text)){
+                MessageBox.Show("Attempting to create a hire asset with a field empty");
+            }
+            else
+            {
+                try
+                {
+                    double dailyRate = double.Parse(txtbox_newDailyRate.Text);
+                    Console.WriteLine(dailyRate);
+                }
+                catch
+                {
+                    MessageBox.Show("Invalid value for daily rate - must be decimal form e.g. 250.50");
+                }
+                HireItem FormHireItem = new HireItem()
+                {
+                    HireID = txtbox_newHireID.Text,
+                    HireName = txtbox_newHireName.Text,
+                    DailyRate = dailyRate                   
+                                        
+                };
+                HireList.Add(FormHireItem);
+                lbx_homePage.Items.Refresh();
+                tbctrl_main.SelectedIndex = 0;
+
+            }
+        }
+
+      
     }
 }
