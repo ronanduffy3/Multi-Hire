@@ -1,20 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Diagnostics;
-using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace HireMockup
 {
@@ -24,15 +12,11 @@ namespace HireMockup
     public partial class MainWindow : Window
     {
         //Create a connection to the DB
-        Model1Container db = new Model1Container();
-
+        private Model1Container db = new Model1Container();
 
         public MainWindow()
         {
             InitializeComponent();
-            
-
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -43,7 +27,6 @@ namespace HireMockup
             var hireAssets = query.ToList();
 
             dataGrid_Home.ItemsSource = hireAssets;
-
         }
 
         private void bttn_listCustomers_Click(object sender, RoutedEventArgs e)
@@ -64,32 +47,10 @@ namespace HireMockup
             newHireAsset(hireName, hireType, hireDailyRate);
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            //]
-            //    catch
-            //    {
-            //        MessageBox.Show("Invalid value for daily rate - must be decimal form e.g. 250.50");
-            //    }
-            //    HireItem FormHireItem = new HireItem()
-            //    {
-            //        HireID = txtbox_newHireID.Text,
-            //        HireName = txtbox_newHireName.Text,
-            //        DailyRate = dailyRate                   
-
-            //    };
-            //    HireList.Add(FormHireItem);
-            //    lbx_homePage.Items.Refresh();
-            //    tbctrl_main.SelectedIndex = 0;
-
-            //}
-        }
-
         private void btn_customerSearch_Click(object sender, RoutedEventArgs e)
         {
             string valueToSearch = customerSearchBox.Text.ToString();
             customerSearchMethod(valueToSearch);
-
         }
 
         public void customerSearchMethod(string valueToSearch)
@@ -135,7 +96,6 @@ namespace HireMockup
             employeeDataGrid.ItemsSource = result;
 
             totalSalaryCalculation();
-
         }
 
         // Method to set/update total salary calculation that we can can when the form loads and when a new employee is created
@@ -162,7 +122,7 @@ namespace HireMockup
                 sqlCommand.Parameters.Add("@dailyRate", dailyRate);
                 sqlCommand.ExecuteNonQuery();
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 Console.WriteLine(ex.ToString());
             }
@@ -170,7 +130,42 @@ namespace HireMockup
             {
                 Console.WriteLine("Completed correctly");
             }
-
         }
+
+        private void employeeDataGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            Console.WriteLine(employeeDataGrid.SelectedItem.ToString());
+        }
+
+        private void button_Click_2(object sender, RoutedEventArgs e)
+        {
+            using(var context = new Model1Container())
+            {
+                try
+                {
+                    int selectedEmployee = int.Parse(tbx_selectedEmployee.Text);
+                    var employee = context.Employees.Find(selectedEmployee);
+                    context.Employees.Remove(employee);
+                    context.SaveChanges();
+                }
+                catch(System.Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+                finally
+                {
+                    var query = from em in db.Employees
+                                select em;
+
+                    var result = query.ToList();
+
+                    employeeDataGrid.ItemsSource = result;
+
+                    totalSalaryCalculation();
+                }
+                
+            }
+        }
+        
     }
 }

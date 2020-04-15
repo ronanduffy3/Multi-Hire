@@ -36,9 +36,12 @@
                     <ColumnDefinition Width="85*"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="MultiHire - Employees" HorizontalAlignment="Left" Margin="43,10,0,0" VerticalAlignment="Top" FontFamily="Sans Serif" FontSize="32"/>
-                <DataGrid x:Name="employeeDataGrid" HorizontalAlignment="Left" Height="482" Margin="43,106,0,0" VerticalAlignment="Top" Width="776" Loaded="dataGrid_Loaded"/>
+                <DataGrid x:Name="employeeDataGrid" HorizontalAlignment="Left" Height="482" Margin="43,106,0,0" VerticalAlignment="Top" Width="776" Loaded="dataGrid_Loaded" SelectionChanged="employeeDataGrid_SelectionChanged"/>
                 <Label x:Name="label" Content="Totally weekly wage bill: " HorizontalAlignment="Left" Margin="43,612,0,0" VerticalAlignment="Top" Height="27" Width="154"/>
                 <Label x:Name="lbl_wageTotal" Content="" HorizontalAlignment="Left" Margin="202,612,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="label2" Content="Remove Employee" HorizontalAlignment="Left" Margin="949,344,0,0" VerticalAlignment="Top" Height="40" Width="204" Grid.ColumnSpan="2" FontSize="24"/>
+                <TextBox x:Name="tbx_selectedEmployee" HorizontalAlignment="Left" Height="23" Margin="969,409,0,0" TextWrapping="Wrap" Text="Insert employee ID here" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2"/>
+                <Button x:Name="button" Content="Click to remove" HorizontalAlignment="Left" Margin="969,456,0,0" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2" Click="button_Click_2"/>
             </Grid>
 
         </TabItem>
