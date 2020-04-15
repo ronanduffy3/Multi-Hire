@@ -98,5 +98,25 @@ namespace HireMockup
 
             dataGrid_Home.ItemsSource = results;
         }
+
+        private void btn_hireSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string valueToSearch = hireSearchBox.Text.ToString();
+            Console.WriteLine($"Searching for {valueToSearch}");
+            hireSearchMethod(valueToSearch);
+        }
+
+        public void hireSearchMethod(string valueToSearch)
+        {
+            Console.WriteLine(valueToSearch);
+
+            var query = from ha in db.HireAssets
+                        where ha.hireType == valueToSearch
+                        select ha;
+
+            var results = query.ToList();
+
+            dataGrid_Home.ItemsSource = results;
+        }
     }
 }
