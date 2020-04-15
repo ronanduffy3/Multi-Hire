@@ -20,114 +20,83 @@ namespace HireMockup
     /// </summary>
     public partial class MainWindow : Window
     {
-        //List<Author> AuthorList = new List<Author>();
-        List<HireItem> HireList = new List<HireItem>();
-        List<Customer> CustomerList = new List<Customer>();
-        public double dailyRate;
+        //Create a connection to the DB
+        Model1Container db = new Model1Container();
+        
 
         public MainWindow()
         {
-            InitializeComponent();        
-            HireItem item1 = new HireItem()
-            {
-                HireID = "C105X",
-                HireName = "Z60 Boom Lift",
-                DailyRate = 250
-            };
-            HireItem item2 = new HireItem()
-            {
-                HireID = "C106X",
-                HireName = "Z52 Boom Lift",
-                DailyRate = 180
-            };
-            HireItem item3 = new HireItem()
-            {
-                HireID = "C205X",
-                HireName = "Genie 32ft Scissor Lift",
-                DailyRate = 150
-            };
+            InitializeComponent();
 
-            Customer customer1 = new Customer()
-            {
-                customerID = 1,
-                customerName = "Ronan Duffy",
-                customerBalance = 0,
-                addressLine1 = "Coill Darach",
-                addressLine2 = "Castleblayney"
-            };
 
-            Customer customer2 = new Customer()
-            {
-                customerID = 2,
-                customerName = "Eugene Callan",
-                customerBalance = 0,
-                addressLine1 = "Toome",
-                addressLine2 = "Aghabog"
-            };
-            Customer customer3 = new Customer()
-            {
-                customerID = 3,
-                customerName = "Mark Tavey",
-                customerBalance = 0,
-                addressLine1 = "Blackhill",
-                addressLine2 = "Castleblayney"
-            };
 
-            HireList.Add(item1);
-            HireList.Add(item2);
-            HireList.Add(item3);
-
-            CustomerList.Add(customer1);
-            CustomerList.Add(customer2);
-            CustomerList.Add(customer3);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            lbx_homePage.ItemsSource = HireList;
+            var query = from ha in db.HireAssets
+                        select ha;
+
+            var hireAssets = query.ToList();
+
+            dataGrid_Home.ItemsSource = hireAssets;
 
         }
 
         private void bttn_listCustomers_Click(object sender, RoutedEventArgs e)
         {
-            lbx_homePage.ItemsSource = CustomerList;
+            var query = from c in db.Customers
+                        select c;
+
+            var customers = query.ToList();
+
+            dataGrid_Home.ItemsSource = customers;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            tbctrl_main.SelectedIndex = 1;
+            
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            if(string.IsNullOrEmpty(txtbox_newHireID.Text) || string.IsNullOrEmpty(txtbox_newHireName.Text) || string.IsNullOrEmpty(txtbox_newDailyRate.Text)){
-                MessageBox.Show("Attempting to create a hire asset with a field empty");
-            }
-            else
-            {
-                try
-                {
-                    double dailyRate = double.Parse(txtbox_newDailyRate.Text);
-                    Console.WriteLine(dailyRate);
-                }
-                catch
-                {
-                    MessageBox.Show("Invalid value for daily rate - must be decimal form e.g. 250.50");
-                }
-                HireItem FormHireItem = new HireItem()
-                {
-                    HireID = txtbox_newHireID.Text,
-                    HireName = txtbox_newHireName.Text,
-                    DailyRate = dailyRate                   
+            //]
+            //    catch
+            //    {
+            //        MessageBox.Show("Invalid value for daily rate - must be decimal form e.g. 250.50");
+            //    }
+            //    HireItem FormHireItem = new HireItem()
+            //    {
+            //        HireID = txtbox_newHireID.Text,
+            //        HireName = txtbox_newHireName.Text,
+            //        DailyRate = dailyRate                   
                                         
-                };
-                HireList.Add(FormHireItem);
-                lbx_homePage.Items.Refresh();
-                tbctrl_main.SelectedIndex = 0;
+            //    };
+            //    HireList.Add(FormHireItem);
+            //    lbx_homePage.Items.Refresh();
+            //    tbctrl_main.SelectedIndex = 0;
 
-            }
+            //}
         }
 
-      
+        private void btn_customerSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string valueToSearch = customerSearchBox.Text.ToString();
+            customerSearchMethod(valueToSearch);
+
+        }
+
+        public void customerSearchMethod(string valueToSearch)
+        {
+            Console.WriteLine(valueToSearch);
+
+            var query = from c in db.Customers
+                        where c.customerName == valueToSearch
+                        select c;
+
+            var results = query.ToList();
+
+            dataGrid_Home.ItemsSource = results;
+        }
     }
 }

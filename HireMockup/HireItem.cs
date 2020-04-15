@@ -9,7 +9,7 @@ namespace HireMockup
     class HireItem
     {
         // Properties of the HireItem
-        public string HireID { get; set; }
+        public int HireID { get; set; }
         public string HireName { get; set; }
         public double DailyRate { get; set; }
 

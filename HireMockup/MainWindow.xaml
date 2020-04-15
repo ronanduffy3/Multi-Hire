@@ -5,24 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HireMockup"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="749.87">
+        Title="MainWindow" Height="747.5" Width="1224.37">
     <TabControl TabStripPlacement="Bottom" x:Name="tbctrl_main">
         <TabItem Name="HomePage" Header="Home Page" Width="100">
-            <Grid Margin="0,0,-8,-1">
+            <Grid Margin="-9,1,1,-2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="576*"/>
-                    <ColumnDefinition Width="85*"/>
+                    <ColumnDefinition Width="711*"/>
+                    <ColumnDefinition Width="506*"/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <ListBox x:Name="lbx_homePage" HorizontalAlignment="Left" Height="248" Margin="43,130,0,0" VerticalAlignment="Top" Width="428"/>
-                <Label Content="MultiHire - Asset Management" HorizontalAlignment="Left" Margin="43,10,0,0" VerticalAlignment="Top" FontFamily="Sans Serif" FontSize="32"/>
-                <TextBox HorizontalAlignment="Left" Height="23" Margin="43,94,0,0" TextWrapping="Wrap" Text="Customer Search" VerticalAlignment="Top" Width="252"/>
-                <Button Content="Go" HorizontalAlignment="Left" Margin="326,94,0,0" VerticalAlignment="Top" Width="145" Height="23"/>
-                <Button Content="Contract" HorizontalAlignment="Left" Margin="520,127,0,0" VerticalAlignment="Top" Width="166" Grid.ColumnSpan="2"/>
-                <Button Content="Invoice" HorizontalAlignment="Left" Margin="520,160,0,0" VerticalAlignment="Top" Width="166" Grid.ColumnSpan="2"/>
-                <Button Content="Return" HorizontalAlignment="Left" Margin="520,197,0,0" VerticalAlignment="Top" Width="166" Grid.ColumnSpan="2"/>
-                <Button Content="Hire List" HorizontalAlignment="Left" Margin="520,301,0,0" VerticalAlignment="Top" Width="166" Click="Button_Click" Grid.ColumnSpan="2"/>
-                <Button Content="Add Hire Equipment" HorizontalAlignment="Left" Margin="520,338,0,0" VerticalAlignment="Top" Width="166" Grid.ColumnSpan="2" Click="Button_Click_1"/>
-                <Button x:Name="bttn_listCustomers" Content="Customer List" HorizontalAlignment="Left" Margin="520,249,0,0" VerticalAlignment="Top" Width="166" Click="bttn_listCustomers_Click" Grid.ColumnSpan="2"/>
+                <Label Content="MultiHire - Asset Management" HorizontalAlignment="Left" Margin="43,10,0,0" VerticalAlignment="Top" FontFamily="Sans Serif" FontSize="32" Height="46" Width="442"/>
+                <TextBox x:Name="customerSearchBox" HorizontalAlignment="Left" Height="23" Margin="43,94,0,0" TextWrapping="Wrap" Text="Customer Search" VerticalAlignment="Top" Width="252"/>
+                <Button x:Name="btn_customerSearch" Content="Go" HorizontalAlignment="Left" Margin="326,94,0,0" VerticalAlignment="Top" Width="145" Height="23" Click="btn_customerSearch_Click"/>
+                <Button Content="Hire List" HorizontalAlignment="Left" Margin="308,196,0,0" VerticalAlignment="Top" Width="166" Click="Button_Click" Grid.Column="1"/>
+                <Button Content="Add Hire Equipment" HorizontalAlignment="Left" Margin="308,252,0,0" VerticalAlignment="Top" Width="166" Click="Button_Click_1" Grid.Column="1"/>
+                <Button x:Name="bttn_listCustomers" Content="Customer List" HorizontalAlignment="Left" Margin="308,144,0,0" VerticalAlignment="Top" Width="166" Click="bttn_listCustomers_Click" Grid.Column="1"/>
+                <DataGrid x:Name="dataGrid_Home" HorizontalAlignment="Left" Height="484" Margin="43,144,0,0" VerticalAlignment="Top" Width="919" Grid.ColumnSpan="2"/>
             </Grid>
         </TabItem>
         <TabItem Name="AddHireItem" Header="Add Hire Item" Width="100">

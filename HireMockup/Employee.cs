@@ -12,13 +12,12 @@ namespace HireMockup
     using System;
     using System.Collections.Generic;
     
-    public partial class Customer
+    public partial class Employee
     {
         public int Id { get; set; }
-        public string customerName { get; set; }
-        public string customerSurname { get; set; }
-        public string addressLine1 { get; set; }
-        public string addressLine2 { get; set; }
-        public decimal accountBalance { get; set; }
+        public string employeeName { get; set; }
+        public string employeeSurname { get; set; }
+        public decimal weeklySalary { get; set; }
+        public string contactNumber { get; set; }
     }
 }
