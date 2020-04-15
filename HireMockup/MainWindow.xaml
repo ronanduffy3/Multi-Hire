@@ -18,24 +18,27 @@
                 <TextBox x:Name="customerSearchBox" HorizontalAlignment="Left" Height="23" Margin="43,94,0,0" TextWrapping="Wrap" Text="Customer Search" VerticalAlignment="Top" Width="204"/>
                 <Button x:Name="btn_customerSearch" Content="Go" HorizontalAlignment="Left" Margin="286,94,0,0" VerticalAlignment="Top" Width="145" Height="23" Click="btn_customerSearch_Click"/>
                 <Button Content="Hire List" HorizontalAlignment="Left" Margin="308,196,0,0" VerticalAlignment="Top" Width="166" Click="Button_Click" Grid.Column="1"/>
-                <Button Content="Add Hire Equipment" HorizontalAlignment="Left" Margin="308,252,0,0" VerticalAlignment="Top" Width="166" Click="Button_Click_1" Grid.Column="1"/>
+                <Button Content="Add Hire Equipment" HorizontalAlignment="Left" Margin="281,462,0,0" VerticalAlignment="Top" Width="193" Click="Button_Click_1" Grid.Column="1"/>
                 <Button x:Name="bttn_listCustomers" Content="Customer List" HorizontalAlignment="Left" Margin="308,144,0,0" VerticalAlignment="Top" Width="166" Click="bttn_listCustomers_Click" Grid.Column="1"/>
                 <DataGrid x:Name="dataGrid_Home" HorizontalAlignment="Left" Height="484" Margin="43,144,0,0" VerticalAlignment="Top" Width="919" Grid.ColumnSpan="2"/>
                 <TextBox x:Name="hireSearchBox" HorizontalAlignment="Left" Height="23" Margin="465,94,0,0" TextWrapping="Wrap" Text="Hire Asset Search" VerticalAlignment="Top" Width="260" Grid.ColumnSpan="2"/>
                 <Button x:Name="btn_hireSearch" Content="Go" HorizontalAlignment="Left" Margin="63,94,0,0" VerticalAlignment="Top" Width="145" Height="23" Click="btn_hireSearch_Click" Grid.Column="1"/>
+                <Label x:Name="label1" Content="Add New Hire Item" Grid.Column="1" HorizontalAlignment="Left" Margin="281,260,0,0" VerticalAlignment="Top" FontSize="24" Width="226" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="tbx_addHireName" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="281,325,0,0" TextWrapping="Wrap" Text="Hire Name" VerticalAlignment="Top" Width="193"/>
+                <TextBox x:Name="tbx_addHireType" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="281,368,0,0" TextWrapping="Wrap" Text="Hire Asset Type" VerticalAlignment="Top" Width="193"/>
+                <TextBox x:Name="tbx_addHireDailyRate" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="281,414,0,0" TextWrapping="Wrap" Text="Daily Rate" VerticalAlignment="Top" Width="193"/>
             </Grid>
         </TabItem>
-        <TabItem Name="AddHireItem" Header="Add Hire Item" Width="100">
+        <TabItem Name="Employees" Header="Employees" Width="100">
             <Grid Margin="0,0,-8,-1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="576*"/>
                     <ColumnDefinition Width="85*"/>
                 </Grid.ColumnDefinitions>
-                <Label Content="MultiHire - Add New Hire Asset" HorizontalAlignment="Left" Margin="43,10,0,0" VerticalAlignment="Top" FontFamily="Sans Serif" FontSize="32"/>
-                <TextBox x:Name="txtbox_newHireID" HorizontalAlignment="Left" Height="23" Margin="43,103,0,0" TextWrapping="Wrap" Text="Hire Asset ID (&quot;C***X&quot;)" VerticalAlignment="Top" Width="181"/>
-                <TextBox x:Name="txtbox_newHireName" HorizontalAlignment="Left" Height="23" Margin="43,156,0,0" TextWrapping="Wrap" Text="Hire Asset Name" VerticalAlignment="Top" Width="181"/>
-                <TextBox x:Name="txtbox_newDailyRate" HorizontalAlignment="Left" Height="23" Margin="43,209,0,0" TextWrapping="Wrap" Text="Daily Rate" VerticalAlignment="Top" Width="181"/>
-                <Button Content="Create Asset" HorizontalAlignment="Left" Margin="43,268,0,0" VerticalAlignment="Top" Width="181" Click="Button_Click_2"/>
+                <Label Content="MultiHire - Employees" HorizontalAlignment="Left" Margin="43,10,0,0" VerticalAlignment="Top" FontFamily="Sans Serif" FontSize="32"/>
+                <DataGrid x:Name="employeeDataGrid" HorizontalAlignment="Left" Height="482" Margin="43,106,0,0" VerticalAlignment="Top" Width="776" Loaded="dataGrid_Loaded"/>
+                <Label x:Name="label" Content="Totally weekly wage bill: " HorizontalAlignment="Left" Margin="43,612,0,0" VerticalAlignment="Top" Height="27" Width="154"/>
+                <Label x:Name="lbl_wageTotal" Content="" HorizontalAlignment="Left" Margin="202,612,0,0" VerticalAlignment="Top"/>
             </Grid>
 
         </TabItem>
