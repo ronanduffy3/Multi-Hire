@@ -20,7 +20,7 @@
                 <Button Content="Hire List" HorizontalAlignment="Left" Margin="308,196,0,0" VerticalAlignment="Top" Width="166" Click="Button_Click" Grid.Column="1"/>
                 <Button Content="Add Hire Equipment" HorizontalAlignment="Left" Margin="281,462,0,0" VerticalAlignment="Top" Width="193" Click="Button_Click_1" Grid.Column="1"/>
                 <Button x:Name="bttn_listCustomers" Content="Customer List" HorizontalAlignment="Left" Margin="308,144,0,0" VerticalAlignment="Top" Width="166" Click="bttn_listCustomers_Click" Grid.Column="1"/>
-                <DataGrid x:Name="dataGrid_Home" HorizontalAlignment="Left" Height="484" Margin="43,144,0,0" VerticalAlignment="Top" Width="919" Grid.ColumnSpan="2"/>
+                <DataGrid x:Name="dataGrid_Home" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="484" Margin="43,144,0,0" VerticalAlignment="Top" Width="919" Grid.ColumnSpan="2"/>
                 <TextBox x:Name="hireSearchBox" HorizontalAlignment="Left" Height="23" Margin="465,94,0,0" TextWrapping="Wrap" Text="Hire Asset Search" VerticalAlignment="Top" Width="260" Grid.ColumnSpan="2"/>
                 <Button x:Name="btn_hireSearch" Content="Go" HorizontalAlignment="Left" Margin="63,94,0,0" VerticalAlignment="Top" Width="145" Height="23" Click="btn_hireSearch_Click" Grid.Column="1"/>
                 <Label x:Name="label1" Content="Add New Hire Item" Grid.Column="1" HorizontalAlignment="Left" Margin="281,260,0,0" VerticalAlignment="Top" FontSize="24" Width="226" Grid.ColumnSpan="2"/>
@@ -36,7 +36,7 @@
                     <ColumnDefinition Width="85*"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="MultiHire - Employees" HorizontalAlignment="Left" Margin="43,10,0,0" VerticalAlignment="Top" FontFamily="Sans Serif" FontSize="32"/>
-                <DataGrid x:Name="employeeDataGrid" HorizontalAlignment="Left" Height="482" Margin="43,106,0,0" VerticalAlignment="Top" Width="776" Loaded="dataGrid_Loaded" SelectionChanged="employeeDataGrid_SelectionChanged"/>
+                <DataGrid x:Name="employeeDataGrid" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="482" Margin="43,106,0,0" VerticalAlignment="Top" Width="776" Loaded="dataGrid_Loaded" />
                 <Label x:Name="label" Content="Totally weekly wage bill: " HorizontalAlignment="Left" Margin="43,612,0,0" VerticalAlignment="Top" Height="27" Width="154"/>
                 <Label x:Name="lbl_wageTotal" Content="" HorizontalAlignment="Left" Margin="202,612,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="label2" Content="Remove Employee" HorizontalAlignment="Left" Margin="949,344,0,0" VerticalAlignment="Top" Height="40" Width="204" Grid.ColumnSpan="2" FontSize="24"/>
