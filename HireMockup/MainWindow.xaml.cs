@@ -27,9 +27,7 @@ namespace HireMockup
         // method to list all hire equipment
         public void Button_Click(object sender, RoutedEventArgs e)
         {
-            DataTable query_results = DataAccessLayer.ListHireAssets();
-
-            
+            DataTable query_results = DataAccessLayer.ListHireAssets();           
             dataGrid_Home.DataContext = query_results.DefaultView;
         }
 
@@ -42,6 +40,7 @@ namespace HireMockup
             dataGrid_Home.DataContext = query_results.DefaultView;
         }
 
+        // Create a new Hire Asset
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             string hireName = tbx_addHireName.Text.ToString();
@@ -50,15 +49,16 @@ namespace HireMockup
             DataAccessLayer.newHireAsset(hireName, hireType, hireDailyRate);
         }
 
+        // Customer Search Function
         private void btn_customerSearch_Click(object sender, RoutedEventArgs e)
         {
             string[] query_strings = customerSearchBox.Text.ToString().Split(' ');
             DataTable query_results = DataAccessLayer.CustomerSearch(query_strings[0], query_strings[1]);
-
-            
             dataGrid_Home.DataContext = query_results.DefaultView;
 
         }
+
+        // Hire Search Function
         private void btn_hireSearch_Click(object sender, RoutedEventArgs e)
         {
             // Get the required search value
@@ -70,7 +70,7 @@ namespace HireMockup
             dataGrid_Home.DataContext = query.DefaultView;
         }
 
-
+        // Popuate dataGrid on load
         private void dataGrid_Loaded(object sender, RoutedEventArgs e)
         {
             DataTable query = DataAccessLayer.ListEmployee();
@@ -80,6 +80,8 @@ namespace HireMockup
             decimal salaryBill = DataAccessLayer.CalculateSalaryBill();
             lbl_wageTotal.Content = salaryBill.ToString("C");
         }
+
+        // Remove Employee
         private void button_Click_2(object sender, RoutedEventArgs e)
         {
             int selectedEmployee = 0;
