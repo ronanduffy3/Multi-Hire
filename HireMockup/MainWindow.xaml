@@ -72,6 +72,8 @@
                 <ListBox x:Name="lbx_contracts" HorizontalAlignment="Left" Height="540" Margin="42,86,0,0" VerticalAlignment="Top" Width="1132" Loaded="listBox_Loaded" SelectionChanged="lbx_contracts_SelectionChanged"/>
                 <Label Content="MultiHire - Active Contracts" HorizontalAlignment="Left" Margin="43,10,0,634" VerticalAlignment="Top" FontFamily="Sans Serif" FontSize="32" Height="46" Width="442"/>
                 <Button x:Name="btn_saveToFile" Content="Save To File" HorizontalAlignment="Left" Margin="42,648,0,0" VerticalAlignment="Top" Width="141" Click="btn_saveToFile_Click"/>
+                <TextBox x:Name="tbx_ContractID" HorizontalAlignment="Left" Height="23" Margin="238,657,0,0" TextWrapping="Wrap" Text="Enter Contract ID" VerticalAlignment="Top" Width="120"/>
+                <Button x:Name="button2" Content="Bill Contract By Id" HorizontalAlignment="Left" Margin="392,648,0,0" VerticalAlignment="Top" Width="158" Click="button2_Click"/>
             </Grid>
         </TabItem>
 

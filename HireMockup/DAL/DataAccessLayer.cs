@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -98,6 +99,36 @@ namespace HireMockup.DAL
                 }
             }
             return customerList;
+        }
+
+        // Bill a customer from a contract
+        public static void BillCustomer(List<Contracts> contractsList, int contractIDToBill)
+        {
+            decimal valueToBill = 0; 
+            var contractToBill = contractsList.FirstOrDefault(o => o.contractID == contractIDToBill);
+            decimal.TryParse(contractToBill.contractValue.ToString(), out valueToBill);
+            int customerIdToBill = int.Parse(contractToBill.customer.Id.ToString());
+
+            using (var context = new Model1Container())
+            {
+                var query = from c in context.Customers
+                             where c.Id == customerIdToBill
+                             select c;
+
+                foreach(var cust in query)
+                {
+                    if (cust.accountBalance >= 0)
+                    {
+                        cust.accountBalance += valueToBill;
+                    }
+                    else if(cust.accountBalance < 0)
+                    {
+                        cust.accountBalance -= valueToBill;
+                    }
+                }
+                contractsList.Remove(contractToBill);
+                context.SaveChanges();
+            }
         }
 
         #endregion
@@ -248,6 +279,7 @@ namespace HireMockup.DAL
             
         }
 
+        // Use an enum to calculate the certain salary
         public static decimal CalculateCertainSalary(string jobTitle)
         {
             decimal salaryBill = 0;

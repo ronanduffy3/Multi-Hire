@@ -127,6 +127,8 @@ namespace HireMockup
             
             contracts = Contracts.ListRandomContracts();
 
+           
+
             lbx_contracts.ItemsSource = contracts.ToList();
         }
 
@@ -150,14 +152,35 @@ namespace HireMockup
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
+            
             decimal weeksWorked;
             string position = cbx_salaryCalculator.SelectedItem.ToString();
             Console.WriteLine(position);
-            decimal.TryParse(tbx_weeksWorked.Text, out weeksWorked);
 
-            decimal salary = SalaryCalculator.CalculateSalary(position, weeksWorked);
+            try
+            {
+                weeksWorked = decimal.Parse(tbx_weeksWorked.Text);
+                decimal salary = SalaryCalculator.CalculateSalary(position, weeksWorked);
+                lbl_salaryCalculator.Content = salary.ToString("C");
 
-            lbl_salaryCalculator.Content = salary.ToString("C"); 
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show($"Input data invalid. System Exception: {ex}");
+            }
+
+            
+
+        }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+           int contractID;
+           int.TryParse(tbx_ContractID.Text, out contractID);
+           DataAccessLayer.BillCustomer(contracts, contractID);
+            lbx_contracts.ItemsSource = null;
+            lbx_contracts.ItemsSource = contracts.ToList();
+
         }
     }
 }
