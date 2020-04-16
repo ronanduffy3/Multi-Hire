@@ -46,8 +46,8 @@
                 <Label x:Name="label_Copy1" Content="Total weekly mechanic bill: " HorizontalAlignment="Left" Margin="579,612,0,0" VerticalAlignment="Top" Height="27" Width="154"/>
                 <Label x:Name="label_Copy2" Content="Total weekly manager bill: " HorizontalAlignment="Left" Margin="306,653,0,0" VerticalAlignment="Top" Height="27" Width="183"/>
                 <Label x:Name="label_Copy3" Content="Total weekly admin bill: " HorizontalAlignment="Left" Margin="579,653,0,0" VerticalAlignment="Top" Height="27" Width="154"/>
-                <Label x:Name="lbl_hireBill" Content="" HorizontalAlignment="Left" Margin="485,615,0,0" VerticalAlignment="Top"/>
-                <Label x:Name="lbl_managerBill" Content="" HorizontalAlignment="Left" Margin="749,615,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lbl_hireBill" Content="" HorizontalAlignment="Left" Margin="485,612,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lbl_managerBill" Content="" HorizontalAlignment="Left" Margin="749,612,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="lbl_adminBill" Content="" HorizontalAlignment="Left" Margin="485,653,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="lbl_mechanicBill" Content="" HorizontalAlignment="Left" Margin="749,656,0,0" VerticalAlignment="Top"/>
             </Grid>
@@ -59,8 +59,9 @@
                     <ColumnDefinition Width="173*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <ListBox x:Name="lbx_contracts" HorizontalAlignment="Left" Height="573" Margin="42,86,0,0" VerticalAlignment="Top" Width="1132" Loaded="listBox_Loaded" SelectionChanged="lbx_contracts_SelectionChanged"/>
+                <ListBox x:Name="lbx_contracts" HorizontalAlignment="Left" Height="540" Margin="42,86,0,0" VerticalAlignment="Top" Width="1132" Loaded="listBox_Loaded" SelectionChanged="lbx_contracts_SelectionChanged"/>
                 <Label Content="MultiHire - Active Contracts" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" FontFamily="Sans Serif" FontSize="32" Height="46" Width="442"/>
+                <Button x:Name="btn_saveToFile" Content="Save To File" HorizontalAlignment="Left" Margin="42,648,0,0" VerticalAlignment="Top" Width="99" Click="btn_saveToFile_Click"/>
             </Grid>
         </TabItem>
 

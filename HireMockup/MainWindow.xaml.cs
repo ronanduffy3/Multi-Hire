@@ -17,6 +17,8 @@ namespace HireMockup
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Contracts> contracts = new List<Contracts>();
+
         DAL.DataAccessLayer dataAccessLayer = new DataAccessLayer();
         //Create a connection to the DB
         private Model1Container db = new Model1Container();
@@ -118,9 +120,9 @@ namespace HireMockup
         }
 
         // Populate the listbox on the third tab with random contracts
-        private void listBox_Loaded(object sender, RoutedEventArgs e)
+        public void listBox_Loaded(object sender, RoutedEventArgs e)
         {
-            List<Contracts> contracts = new List<Contracts>();
+            
             contracts = Contracts.ListRandomContracts();
 
             lbx_contracts.ItemsSource = contracts.ToList();
@@ -129,6 +131,19 @@ namespace HireMockup
         private void lbx_contracts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void btn_saveToFile_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Contracts.WriteContractsToFile(contracts);
+                MessageBox.Show("Contracts saved to c:/temp");
+            }
+            catch(SystemException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

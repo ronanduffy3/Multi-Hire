@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
+using System.Diagnostics.Contracts;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HireMockup.DAL;
+using Newtonsoft.Json;
 
 namespace HireMockup.BLL
 {
@@ -55,6 +58,18 @@ namespace HireMockup.BLL
                 contractList.Add(contract);
             }
             return contractList;
+        }
+
+        // Method that writes the list of contracts to a txt file 
+        public static void WriteContractsToFile(List<Contracts> contractList)
+        {
+            string contractData = JsonConvert.SerializeObject(contractList, Formatting.Indented);
+
+            using(StreamWriter stream = new StreamWriter("c:/temp/contractdata.json"))
+            {
+                stream.Write(contractData);
+                stream.Close();
+            }
         }
 
         #endregion
