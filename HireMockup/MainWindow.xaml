@@ -14,7 +14,7 @@
                     <ColumnDefinition Width="506*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Label Content="MultiHire - Asset Management" HorizontalAlignment="Left" Margin="43,10,0,0" VerticalAlignment="Top" FontFamily="Sans Serif" FontSize="32" Height="46" Width="442"/>
+                <Label Content="MultiHire - Asset Management" HorizontalAlignment="Left" Margin="43,10,0,634" FontFamily="Sans Serif" FontSize="32" Width="442"/>
                 <TextBox x:Name="customerSearchBox" HorizontalAlignment="Left" Height="23" Margin="43,94,0,0" TextWrapping="Wrap" Text="Customer Search" VerticalAlignment="Top" Width="204"/>
                 <Button x:Name="btn_customerSearch" Content="Go" HorizontalAlignment="Left" Margin="286,94,0,0" VerticalAlignment="Top" Width="145" Height="23" Click="btn_customerSearch_Click"/>
                 <Button Content="Hire List" HorizontalAlignment="Left" Margin="308,196,0,0" VerticalAlignment="Top" Width="166" Click="Button_Click" Grid.Column="1"/>
@@ -44,6 +44,16 @@
                 <Button x:Name="button" Content="Click to remove" HorizontalAlignment="Left" Margin="969,456,0,0" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2" Click="button_Click_2"/>
             </Grid>
 
+        </TabItem>
+        <TabItem Name="ContractsTab" Header="Contracts" Width="100">
+            <Grid Margin="0,0,-8,-1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="173*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ListBox x:Name="lbx_contracts" HorizontalAlignment="Left" Height="573" Margin="42,86,0,0" VerticalAlignment="Top" Width="1132" Loaded="listBox_Loaded" SelectionChanged="lbx_contracts_SelectionChanged"/>
+                <Label Content="MultiHire - Active Contracts" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" FontFamily="Sans Serif" FontSize="32" Height="46" Width="442"/>
+            </Grid>
         </TabItem>
 
 

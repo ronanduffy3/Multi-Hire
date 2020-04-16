@@ -6,6 +6,9 @@ using System.Windows;
 using System.Windows.Controls;
 using HireMockup.DAL;
 using HireMockup.BLL;
+using System.Windows.Documents;
+using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 
 namespace HireMockup
 {
@@ -103,6 +106,19 @@ namespace HireMockup
             employeeDataGrid.DataContext = null;
             employeeDataGrid.DataContext = query.DefaultView;
         }
-        
+
+        // Populate the listbox on the third tab with random contracts
+        private void listBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<Contracts> contracts = new List<Contracts>();
+            contracts = Contracts.ListRandomContracts();
+
+            lbx_contracts.ItemsSource = contracts.ToList();
+        }
+
+        private void lbx_contracts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

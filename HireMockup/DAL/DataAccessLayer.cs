@@ -23,9 +23,10 @@ namespace HireMockup.DAL
         #endregion
 
         #region Data Retrieval
-        
-        // All Customer Related Queries From Here Down.
 
+        #region Customer Queries
+
+        // Finds all customers
         public static DataTable AllCustomers()
         {
             // Method that returns a datatable of all customers.
@@ -53,6 +54,7 @@ namespace HireMockup.DAL
             return tbl;
         }
 
+        // Method to facilitate search
         public static DataTable CustomerSearch(string custName, string custSurname)
         {
             // Pass in the values of the search box and use a workaround seen in mainwindow.xaml.cs to avoid error.
@@ -81,8 +83,26 @@ namespace HireMockup.DAL
             return tbl;
         }
 
-        // All hire item queries from here down
-        
+        // Returns a list of customers
+        public static List<Customer> GetCustomerList()
+        {
+            List<Customer> customerList = new List<Customer>();
+            using (var context = new Model1Container())
+            {
+                var query = (from c in context.Customers
+                             select c).ToList();
+
+                foreach (var c in query)
+                {
+                    customerList.Add(c);
+                }
+            }
+            return customerList;
+        }
+
+        #endregion
+
+        #region Hire Item Queries
 
         // List all HireAssets
         public static DataTable ListHireAssets()
@@ -112,6 +132,7 @@ namespace HireMockup.DAL
             return tb1;
         }
 
+        // Method to search assets by type
         public static DataTable HireAssetSearch(string searchValue)
         {
             DataTable tb1 = new DataTable();
@@ -160,6 +181,26 @@ namespace HireMockup.DAL
                 MessageBox.Show("Item added successfully.");
             }
         }
+
+        public static List<HireAsset> GetHireList()
+        {
+            List<HireAsset> hireList = new List<HireAsset>();
+            using (var context = new Model1Container())
+            {
+                var query = (from ha in context.HireAssets
+                             select ha).ToList();
+
+                foreach (var c in query)
+                {
+                    hireList.Add(c);
+                }
+            }
+            return hireList;
+        }
+
+        #endregion
+
+        #region Employee Queries
 
         // All employee queries from here down
         public static DataTable ListEmployee()
@@ -235,6 +276,7 @@ namespace HireMockup.DAL
             
         }
 
+        #endregion
 
         #endregion
 
