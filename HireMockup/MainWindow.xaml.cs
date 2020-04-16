@@ -81,7 +81,17 @@ namespace HireMockup
             employeeDataGrid.DataContext = query.DefaultView;
 
             decimal salaryBill = DataAccessLayer.CalculateSalaryBill();
+            decimal hireSalaryBill = DataAccessLayer.CalculateCertainSalary("Hire Operator");
+            decimal managerSalaryBill = DataAccessLayer.CalculateCertainSalary("Manager");
+            decimal mechanicSalaryBill = DataAccessLayer.CalculateCertainSalary("Mechanic");
+            decimal adminSalaryBill = DataAccessLayer.CalculateCertainSalary("Admin");
             lbl_wageTotal.Content = salaryBill.ToString("C");
+            lbl_hireBill.Content = hireSalaryBill.ToString("C");
+            lbl_managerBill.Content = managerSalaryBill.ToString("C");
+            lbl_mechanicBill.Content = mechanicSalaryBill.ToString("C");
+            lbl_adminBill.Content = adminSalaryBill.ToString("C");
+            
+            
         }
 
         // Remove Employee

@@ -42,6 +42,14 @@
                 <Label x:Name="label2" Content="Remove Employee" HorizontalAlignment="Left" Margin="949,344,0,0" VerticalAlignment="Top" Height="40" Width="204" Grid.ColumnSpan="2" FontSize="24"/>
                 <TextBox x:Name="tbx_selectedEmployee" HorizontalAlignment="Left" Height="23" Margin="969,409,0,0" TextWrapping="Wrap" Text="Insert employee ID here" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2"/>
                 <Button x:Name="button" Content="Click to remove" HorizontalAlignment="Left" Margin="969,456,0,0" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2" Click="button_Click_2"/>
+                <Label x:Name="label_Copy" Content="Total weekly hire operator bill: " HorizontalAlignment="Left" Margin="306,612,0,0" VerticalAlignment="Top" Height="27" Width="174"/>
+                <Label x:Name="label_Copy1" Content="Total weekly mechanic bill: " HorizontalAlignment="Left" Margin="579,612,0,0" VerticalAlignment="Top" Height="27" Width="154"/>
+                <Label x:Name="label_Copy2" Content="Total weekly manager bill: " HorizontalAlignment="Left" Margin="306,653,0,0" VerticalAlignment="Top" Height="27" Width="183"/>
+                <Label x:Name="label_Copy3" Content="Total weekly admin bill: " HorizontalAlignment="Left" Margin="579,653,0,0" VerticalAlignment="Top" Height="27" Width="154"/>
+                <Label x:Name="lbl_hireBill" Content="" HorizontalAlignment="Left" Margin="485,615,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lbl_managerBill" Content="" HorizontalAlignment="Left" Margin="749,615,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lbl_adminBill" Content="" HorizontalAlignment="Left" Margin="485,653,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lbl_mechanicBill" Content="" HorizontalAlignment="Left" Margin="749,656,0,0" VerticalAlignment="Top"/>
             </Grid>
 
         </TabItem>

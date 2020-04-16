@@ -25,6 +25,7 @@
           <Property Name="employeeSurname" Type="nvarchar(max)" Nullable="false" />
           <Property Name="weeklySalary" Type="money" Nullable="false" />
           <Property Name="contactNumber" Type="nchar" MaxLength="15" />
+          <Property Name="jobTitle" Type="nchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="HireAssets">
           <Key>
@@ -67,6 +68,7 @@
           <Property Name="employeeSurname" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="weeklySalary" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="contactNumber" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="jobTitle" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -98,7 +100,8 @@
     <EntitySetMapping Name="Employees">
       <EntityTypeMapping TypeName="IsTypeOf(Model1.Employee)">
         <MappingFragment StoreEntitySet="Employees">
-          <ScalarProperty Name="contactNumber" ColumnName="contactNumber" />
+          <ScalarProperty Name="jobTitle" ColumnName="jobTitle" />
+                <ScalarProperty Name="contactNumber" ColumnName="contactNumber" />
                 <ScalarProperty Name="weeklySalary" ColumnName="weeklySalary" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="employeeName" ColumnName="employeeName" />

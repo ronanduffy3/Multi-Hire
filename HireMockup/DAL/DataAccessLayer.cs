@@ -214,6 +214,7 @@ namespace HireMockup.DAL
             tb1.Columns.Add("Employee Surname", typeof(string));
             tb1.Columns.Add("Weekly Salary", typeof(decimal));
             tb1.Columns.Add("Contact Number", typeof(string));
+            tb1.Columns.Add("Job Title", typeof(string));
 
             using (var context = new Model1Container())
             {
@@ -223,7 +224,7 @@ namespace HireMockup.DAL
 
                 foreach (var employee in query)
                 {
-                    tb1.Rows.Add(employee.Id, employee.employeeName, employee.employeeSurname, employee.weeklySalary, employee.contactNumber);
+                    tb1.Rows.Add(employee.Id, employee.employeeName, employee.employeeSurname, employee.weeklySalary, employee.contactNumber, employee.jobTitle);
                 }
             }
             return tb1;
@@ -245,6 +246,22 @@ namespace HireMockup.DAL
 
             return totalSalaryBill;
             
+        }
+
+        public static decimal CalculateCertainSalary(string jobTitle)
+        {
+            decimal salaryBill = 0;
+
+            using (var context = new Model1Container())
+            {
+                var query = from e in context.Employees
+                            where e.jobTitle == jobTitle
+                            select e.weeklySalary;
+
+                salaryBill = query.Sum();
+            }
+            return salaryBill;
+
         }
 
         // Remove an employee from DB

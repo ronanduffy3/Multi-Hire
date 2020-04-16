@@ -19,5 +19,6 @@ namespace HireMockup
         public string employeeSurname { get; set; }
         public decimal weeklySalary { get; set; }
         public string contactNumber { get; set; }
+        public string jobTitle { get; set; }
     }
 }
