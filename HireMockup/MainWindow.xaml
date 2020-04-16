@@ -35,21 +35,31 @@
                     <ColumnDefinition Width="576*"/>
                     <ColumnDefinition Width="85*"/>
                 </Grid.ColumnDefinitions>
-                <Label Content="MultiHire - Employees" HorizontalAlignment="Left" Margin="43,10,0,0" VerticalAlignment="Top" FontFamily="Sans Serif" FontSize="32"/>
+                <Label Content="MultiHire - Employees" HorizontalAlignment="Left" Margin="43,10,0,634" VerticalAlignment="Top" FontFamily="Sans Serif" FontSize="32"/>
                 <DataGrid x:Name="employeeDataGrid" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="482" Margin="43,106,0,0" VerticalAlignment="Top" Width="776" Loaded="dataGrid_Loaded" />
                 <Label x:Name="label" Content="Totally weekly wage bill: " HorizontalAlignment="Left" Margin="43,612,0,0" VerticalAlignment="Top" Height="27" Width="154"/>
                 <Label x:Name="lbl_wageTotal" Content="" HorizontalAlignment="Left" Margin="202,612,0,0" VerticalAlignment="Top"/>
-                <Label x:Name="label2" Content="Remove Employee" HorizontalAlignment="Left" Margin="949,344,0,0" VerticalAlignment="Top" Height="40" Width="204" Grid.ColumnSpan="2" FontSize="24"/>
-                <TextBox x:Name="tbx_selectedEmployee" HorizontalAlignment="Left" Height="23" Margin="969,409,0,0" TextWrapping="Wrap" Text="Insert employee ID here" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2"/>
-                <Button x:Name="button" Content="Click to remove" HorizontalAlignment="Left" Margin="969,456,0,0" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2" Click="button_Click_2"/>
+                <Label x:Name="label2" Content="Remove Employee" HorizontalAlignment="Left" Margin="950,444,0,0" VerticalAlignment="Top" Height="40" Width="204" Grid.ColumnSpan="2" FontSize="24"/>
+                <TextBox x:Name="tbx_selectedEmployee" HorizontalAlignment="Left" Height="23" Margin="970,509,0,0" TextWrapping="Wrap" Text="Insert employee ID here" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2"/>
+                <Button x:Name="button" Content="Click to remove" HorizontalAlignment="Left" Margin="970,556,0,0" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2" Click="button_Click_2"/>
                 <Label x:Name="label_Copy" Content="Total weekly hire operator bill: " HorizontalAlignment="Left" Margin="306,612,0,0" VerticalAlignment="Top" Height="27" Width="174"/>
                 <Label x:Name="label_Copy1" Content="Total weekly mechanic bill: " HorizontalAlignment="Left" Margin="579,612,0,0" VerticalAlignment="Top" Height="27" Width="154"/>
                 <Label x:Name="label_Copy2" Content="Total weekly manager bill: " HorizontalAlignment="Left" Margin="306,653,0,0" VerticalAlignment="Top" Height="27" Width="183"/>
                 <Label x:Name="label_Copy3" Content="Total weekly admin bill: " HorizontalAlignment="Left" Margin="579,653,0,0" VerticalAlignment="Top" Height="27" Width="154"/>
-                <Label x:Name="lbl_hireBill" Content="" HorizontalAlignment="Left" Margin="485,612,0,0" VerticalAlignment="Top"/>
-                <Label x:Name="lbl_managerBill" Content="" HorizontalAlignment="Left" Margin="749,612,0,0" VerticalAlignment="Top"/>
-                <Label x:Name="lbl_adminBill" Content="" HorizontalAlignment="Left" Margin="485,653,0,0" VerticalAlignment="Top"/>
-                <Label x:Name="lbl_mechanicBill" Content="" HorizontalAlignment="Left" Margin="749,656,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lbl_hireBill" Content="" HorizontalAlignment="Left" Margin="749,612,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lbl_managerBill" Content="" HorizontalAlignment="Left" Margin="485,612,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lbl_adminBill" Content="" HorizontalAlignment="Left" Margin="749,653,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.542"/>
+                <Label x:Name="lbl_mechanicBill" Content="" HorizontalAlignment="Left" Margin="485,653,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="label3" Content="Salary Calculator" HorizontalAlignment="Left" Margin="950,106,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" FontSize="24" Width="204"/>
+                <ComboBox x:Name="cbx_salaryCalculator" ItemsSource="{Binding}" HorizontalAlignment="Right" Margin="0,172,102,0" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2">
+                </ComboBox>
+                <Label x:Name="label4" Content="Job Title" HorizontalAlignment="Left" Margin="888,172,0,0" VerticalAlignment="Top" Width="56"/>
+                <Label x:Name="label4_Copy" Content="Weeks Worked" HorizontalAlignment="Left" Margin="856,230,0,0" VerticalAlignment="Top" Width="88"/>
+                <TextBox x:Name="tbx_weeksWorked" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="970,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146"/>
+                <Label x:Name="label4_Copy1" Content="Result" HorizontalAlignment="Left" Margin="895,278,0,0" VerticalAlignment="Top" Width="49"/>
+                <Label x:Name="lbl_salaryCalculator" Content="" HorizontalAlignment="Left" Margin="970,278,0,0" VerticalAlignment="Top" Width="88"/>
+                <Button x:Name="button1" Content="Calculate" HorizontalAlignment="Left" Margin="970,324,0,0" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2" Click="button1_Click"/>
+
             </Grid>
 
         </TabItem>
@@ -60,7 +70,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <ListBox x:Name="lbx_contracts" HorizontalAlignment="Left" Height="540" Margin="42,86,0,0" VerticalAlignment="Top" Width="1132" Loaded="listBox_Loaded" SelectionChanged="lbx_contracts_SelectionChanged"/>
-                <Label Content="MultiHire - Active Contracts" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" FontFamily="Sans Serif" FontSize="32" Height="46" Width="442"/>
+                <Label Content="MultiHire - Active Contracts" HorizontalAlignment="Left" Margin="43,10,0,634" VerticalAlignment="Top" FontFamily="Sans Serif" FontSize="32" Height="46" Width="442"/>
                 <Button x:Name="btn_saveToFile" Content="Save To File" HorizontalAlignment="Left" Margin="42,648,0,0" VerticalAlignment="Top" Width="141" Click="btn_saveToFile_Click"/>
             </Grid>
         </TabItem>

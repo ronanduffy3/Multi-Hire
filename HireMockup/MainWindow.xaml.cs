@@ -9,6 +9,7 @@ using HireMockup.BLL;
 using System.Windows.Documents;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.Windows.Markup.Localizer;
 
 namespace HireMockup
 {
@@ -79,6 +80,7 @@ namespace HireMockup
         private void dataGrid_Loaded(object sender, RoutedEventArgs e)
         {
             DataTable query = DataAccessLayer.ListEmployee();
+            cbx_salaryCalculator.ItemsSource = Enum.GetValues(typeof(SalaryCalculator.JobTitles));
 
             employeeDataGrid.DataContext = query.DefaultView;
 
@@ -144,6 +146,18 @@ namespace HireMockup
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            decimal weeksWorked;
+            string position = cbx_salaryCalculator.SelectedItem.ToString();
+            Console.WriteLine(position);
+            decimal.TryParse(tbx_weeksWorked.Text, out weeksWorked);
+
+            decimal salary = SalaryCalculator.CalculateSalary(position, weeksWorked);
+
+            lbl_salaryCalculator.Content = salary.ToString("C"); 
         }
     }
 }
