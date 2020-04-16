@@ -88,7 +88,7 @@
     <Compile Include="BLL\bll_Customer.cs" />
     <Compile Include="BLL\bll_Employee.cs" />
     <Compile Include="BLL\bll_HireAsset.cs" />
-    <Compile Include="BLL\Contracts.cs" />
+    <Compile Include="BLL\bll_Contracts.cs" />
     <Compile Include="Customer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

@@ -19,7 +19,7 @@ namespace HireMockup.DAL
         
         // Create an instance of the database here
         private Model1Container db = new Model1Container();
-
+        
         #endregion
 
         #region Data Retrieval
@@ -253,12 +253,18 @@ namespace HireMockup.DAL
             decimal salaryBill = 0;
 
             using (var context = new Model1Container())
-            {
+            { 
                 var query = from e in context.Employees
                             where e.jobTitle == jobTitle
                             select e.weeklySalary;
-
-                salaryBill = query.Sum();
+                if (query != null)
+                {
+                    salaryBill = query.Sum();
+                }
+                else
+                {
+                    salaryBill = 0;
+                }
             }
             return salaryBill;
 
