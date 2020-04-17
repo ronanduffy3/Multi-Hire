@@ -19,10 +19,7 @@ namespace HireMockup
     public partial class MainWindow : Window
     {
         List<Contracts> contracts = new List<Contracts>();
-
         DAL.DataAccessLayer dataAccessLayer = new DataAccessLayer();
-        //Create a connection to the DB
-        private Model1Container db = new Model1Container();
 
         public MainWindow()
         {
@@ -58,9 +55,19 @@ namespace HireMockup
         // Customer Search Function
         private void btn_customerSearch_Click(object sender, RoutedEventArgs e)
         {
+            // Split the search string to avoid errors
             string[] query_strings = customerSearchBox.Text.ToString().Split(' ');
-            DataTable query_results = DataAccessLayer.CustomerSearch(query_strings[0], query_strings[1]);
-            dataGrid_Home.DataContext = query_results.DefaultView;
+            if (query_strings[1] != null)
+            {
+                DataTable query_results = DataAccessLayer.CustomerSearch(query_strings[0], query_strings[1]);
+                dataGrid_Home.DataContext = query_results.DefaultView;
+            }
+            else
+            {
+                query_strings[1] = " ";
+                DataTable query_results = DataAccessLayer.CustomerSearch(query_strings[0], query_strings[1]);
+                dataGrid_Home.DataContext = query_results.DefaultView;
+            }        
 
         }
 
@@ -84,16 +91,7 @@ namespace HireMockup
 
             employeeDataGrid.DataContext = query.DefaultView;
 
-            decimal salaryBill = DataAccessLayer.CalculateSalaryBill();
-            decimal hireSalaryBill = DataAccessLayer.CalculateCertainSalary("Hire Operator");
-            decimal managerSalaryBill = DataAccessLayer.CalculateCertainSalary("Manager");
-            decimal mechanicSalaryBill = DataAccessLayer.CalculateCertainSalary("Mechanic");
-            decimal adminSalaryBill = DataAccessLayer.CalculateCertainSalary("Admin");
-            lbl_wageTotal.Content = salaryBill.ToString("C");
-            lbl_hireBill.Content = hireSalaryBill.ToString("C");
-            lbl_managerBill.Content = managerSalaryBill.ToString("C");
-            lbl_mechanicBill.Content = mechanicSalaryBill.ToString("C");
-            lbl_adminBill.Content = adminSalaryBill.ToString("C");
+            refreshSalarys();
             
             
         }
@@ -114,8 +112,7 @@ namespace HireMockup
             DataAccessLayer.RemoveEmployeeByID(selectedEmployee);
 
             // Refresh Code
-            decimal newSalaryTotal = DataAccessLayer.CalculateSalaryBill();
-            lbl_wageTotal.Content = newSalaryTotal.ToString("C");
+            refreshSalarys();
             DataTable query = DataAccessLayer.ListEmployee();
             employeeDataGrid.DataContext = null;
             employeeDataGrid.DataContext = query.DefaultView;
@@ -132,11 +129,7 @@ namespace HireMockup
             lbx_contracts.ItemsSource = contracts.ToList();
         }
 
-        private void lbx_contracts_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
+        // Save all the contracts to file
         private void btn_saveToFile_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -150,6 +143,7 @@ namespace HireMockup
             }
         }
 
+        // Salary Calculator Evenmt
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             
@@ -173,14 +167,35 @@ namespace HireMockup
 
         }
 
+        // Bill a contract button
         private void button2_Click(object sender, RoutedEventArgs e)
         {
            int contractID;
            int.TryParse(tbx_ContractID.Text, out contractID);
            DataAccessLayer.BillCustomer(contracts, contractID);
             lbx_contracts.ItemsSource = null;
-            lbx_contracts.ItemsSource = contracts.ToList();
+            lbx_contracts.ItemsSource = contracts.ToList(); 
 
+        }
+
+        // Method to refresh the salary labels
+        public void refreshSalarys()
+        {
+            lbl_wageTotal.Content = null;
+            lbl_hireBill.Content = null;
+            lbl_managerBill.Content = null;
+            lbl_mechanicBill.Content = null;
+            lbl_adminBill.Content = null;
+            decimal salaryBill = DataAccessLayer.CalculateSalaryBill();
+            decimal hireSalaryBill = DataAccessLayer.CalculateCertainSalary("Hire Operator");
+            decimal managerSalaryBill = DataAccessLayer.CalculateCertainSalary("Manager");
+            decimal mechanicSalaryBill = DataAccessLayer.CalculateCertainSalary("Mechanic");
+            decimal adminSalaryBill = DataAccessLayer.CalculateCertainSalary("Admin");
+            lbl_wageTotal.Content = salaryBill.ToString("C");
+            lbl_hireBill.Content = hireSalaryBill.ToString("C");
+            lbl_managerBill.Content = managerSalaryBill.ToString("C");
+            lbl_mechanicBill.Content = mechanicSalaryBill.ToString("C");
+            lbl_adminBill.Content = adminSalaryBill.ToString("C");
         }
     }
 }
