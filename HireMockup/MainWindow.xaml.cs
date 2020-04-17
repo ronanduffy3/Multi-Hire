@@ -20,7 +20,6 @@ namespace HireMockup
     {
         List<Contracts> contracts = new List<Contracts>();
         DAL.DataAccessLayer dataAccessLayer = new DataAccessLayer();
-
         public MainWindow()
         {
             InitializeComponent();
@@ -170,12 +169,19 @@ namespace HireMockup
         // Bill a contract button
         private void button2_Click(object sender, RoutedEventArgs e)
         {
-           int contractID;
-           int.TryParse(tbx_ContractID.Text, out contractID);
-           DataAccessLayer.BillCustomer(contracts, contractID);
-            lbx_contracts.ItemsSource = null;
-            lbx_contracts.ItemsSource = contracts.ToList(); 
-
+            int contractID;
+            try
+            {
+                int.TryParse(tbx_ContractID.Text, out contractID);
+                DataAccessLayer.BillCustomer(contracts, contractID);
+                lbx_contracts.ItemsSource = null;
+                lbx_contracts.ItemsSource = contracts.ToList();
+            }
+            catch(SystemException ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+           
         }
 
         // Method to refresh the salary labels
