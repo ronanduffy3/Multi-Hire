@@ -297,6 +297,7 @@ namespace HireMockup.DAL
                 {
                     salaryBill = 0;
                 }
+
             }
             return salaryBill;
 

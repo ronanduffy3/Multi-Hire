@@ -69,11 +69,21 @@
                     <ColumnDefinition Width="173*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <ListBox x:Name="lbx_contracts" HorizontalAlignment="Left" Height="540" Margin="42,86,0,0" VerticalAlignment="Top" Width="1132" Loaded="listBox_Loaded" />
+                <ListBox x:Name="lbx_contracts" HorizontalAlignment="Left" Height="540" Margin="42,86,0,0" VerticalAlignment="Top" Width="775" Loaded="listBox_Loaded" />
                 <Label Content="MultiHire - Active Contracts" HorizontalAlignment="Left" Margin="43,10,0,634" VerticalAlignment="Top" FontFamily="Sans Serif" FontSize="32" Height="46" Width="442"/>
                 <Button x:Name="btn_saveToFile" Content="Save To File" HorizontalAlignment="Left" Margin="42,648,0,0" VerticalAlignment="Top" Width="141" Click="btn_saveToFile_Click"/>
                 <TextBox x:Name="tbx_ContractID" HorizontalAlignment="Left" Height="23" Margin="238,657,0,0" TextWrapping="Wrap" Text="Enter Contract ID" VerticalAlignment="Top" Width="120"/>
                 <Button x:Name="button2" Content="Bill Contract By Id" HorizontalAlignment="Left" Margin="392,648,0,0" VerticalAlignment="Top" Width="158" Click="button2_Click"/>
+                <StackPanel HorizontalAlignment="Left" Height="540" Margin="877,86,0,0" VerticalAlignment="Top" Width="303">
+                    <Label x:Name="label3_Copy" Content="Create a contract" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" Width="196"/>
+                    <ComboBox x:Name="comboBox_allCustomers" 
+                              VerticalAlignment="Stretch"
+                              Margin="0,10,0,10" 
+                              ItemsSource="{Binding Path=customerList}"
+                              DisplayMemberPath="customerName"/>
+                    <ComboBox x:Name="comboBox_allHireAssets" VerticalAlignment="Stretch" Margin="0,10,0,10"/>
+                    <Button x:Name="bttn_CreateContract" Content="Create" Margin="54,10,53,10" Click="bttn_CreateContract_Click"/>
+                </StackPanel>
             </Grid>
         </TabItem>
 

@@ -60,6 +60,20 @@ namespace HireMockup.BLL
             return contractList;
         }
 
+        public static Contracts addContract(Customer _customer, HireAsset hireAsset)
+        {
+            Random rand = new Random();
+
+            Contracts newContract = new Contracts()
+            {
+                contractID = rand.Next(1, 500),
+                contractValue = rand.Next(1,500),
+                customer = _customer,
+                item = hireAsset
+            };
+            return newContract;
+        }
+
         // Method that writes the list of contracts to a txt file 
         public static void WriteContractsToFile(List<Contracts> contractList)
         {

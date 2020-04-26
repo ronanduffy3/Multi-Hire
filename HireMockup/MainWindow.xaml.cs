@@ -19,10 +19,12 @@ namespace HireMockup
     public partial class MainWindow : Window
     {
         List<Contracts> contracts = new List<Contracts>();
+        public List<Customer> customerList = new List<Customer>();
         DAL.DataAccessLayer dataAccessLayer = new DataAccessLayer();
         public MainWindow()
         {
             InitializeComponent();
+            customerList = DataAccessLayer.GetCustomerList();
         }
 
 
@@ -122,11 +124,11 @@ namespace HireMockup
         {
             
             contracts = Contracts.ListRandomContracts();
-
-           
-
             lbx_contracts.ItemsSource = contracts.ToList();
+
+
         }
+
 
         // Save all the contracts to file
         private void btn_saveToFile_Click(object sender, RoutedEventArgs e)
@@ -202,6 +204,17 @@ namespace HireMockup
             lbl_managerBill.Content = managerSalaryBill.ToString("C");
             lbl_mechanicBill.Content = mechanicSalaryBill.ToString("C");
             lbl_adminBill.Content = adminSalaryBill.ToString("C");
+        }
+
+        private void bttn_CreateContract_Click(object sender, RoutedEventArgs e)
+        {
+            Customer customer = (Customer)comboBox_allCustomers.SelectedItem;
+            HireAsset hireAsset = (HireAsset)comboBox_allHireAssets.SelectedItem;
+
+            Contracts tempContract = BLL.Contracts.addContract(customer, hireAsset);
+            contracts.Add(tempContract);
+            lbx_contracts.ItemsSource = null;
+            lbx_contracts.ItemsSource = contracts.ToList();
         }
     }
 }
