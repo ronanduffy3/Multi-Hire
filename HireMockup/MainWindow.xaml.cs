@@ -20,11 +20,12 @@ namespace HireMockup
     {
         List<Contracts> contracts = new List<Contracts>();
         public List<Customer> customerList = new List<Customer>();
-        DAL.DataAccessLayer dataAccessLayer = new DataAccessLayer();
+        public List<HireAsset> hireList = new List<HireAsset>();
         public MainWindow()
         {
             InitializeComponent();
             customerList = DataAccessLayer.GetCustomerList();
+            hireList = DataAccessLayer.GetHireList();
         }
 
 
