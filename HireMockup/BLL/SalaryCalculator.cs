@@ -8,6 +8,7 @@ namespace HireMockup.BLL
 {
     public class SalaryCalculator
     {
+        // Define the job titles available
         public enum JobTitles
         {
             Manager,
@@ -18,8 +19,10 @@ namespace HireMockup.BLL
 
         public static decimal CalculateSalary(string position, decimal weeksWorked)
         {
+            // Initiliaze a decimal to hold the salary to be returned
             decimal totalSalary = 0;
 
+            // 4 positions with a specific salary simply multiply weeks worked by salary
             switch (position)
             {
                 case "Manager":
@@ -36,6 +39,7 @@ namespace HireMockup.BLL
                     break;
             }
 
+            // Return the decimal
             return totalSalary;
                
         }
