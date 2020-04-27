@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HireMockup"
         mc:Ignorable="d"
         Title="MainWindow" Height="747.5" Width="1224.37">
-    <TabControl TabStripPlacement="Bottom" x:Name="tbctrl_main">
+    <TabControl TabStripPlacement="Bottom" x:Name="tbctrl_main" SelectionChanged="tbctrl_main_SelectionChanged">
         <TabItem Name="HomePage" Header="Home Page" Width="100">
             <Grid Margin="-9,1,1,-2">
                 <Grid.ColumnDefinitions>
@@ -30,7 +30,7 @@
             </Grid>
         </TabItem>
         <TabItem Name="Employees" Header="Employees" Width="100">
-            <Grid Margin="0,0,-8,-1">
+            <Grid Margin="0,0,-8,-1" Height="690" VerticalAlignment="Bottom">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="576*"/>
                     <ColumnDefinition Width="85*"/>
@@ -46,10 +46,10 @@
                 <Label x:Name="label_Copy1" Content="Total weekly mechanic bill: " HorizontalAlignment="Left" Margin="579,612,0,0" VerticalAlignment="Top" Height="27" Width="154"/>
                 <Label x:Name="label_Copy2" Content="Total weekly manager bill: " HorizontalAlignment="Left" Margin="306,653,0,0" VerticalAlignment="Top" Height="27" Width="183"/>
                 <Label x:Name="label_Copy3" Content="Total weekly admin bill: " HorizontalAlignment="Left" Margin="579,653,0,0" VerticalAlignment="Top" Height="27" Width="154"/>
-                <Label x:Name="lbl_hireBill" Content="" HorizontalAlignment="Left" Margin="749,612,0,0" VerticalAlignment="Top"/>
-                <Label x:Name="lbl_managerBill" Content="" HorizontalAlignment="Left" Margin="485,612,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lbl_hireBill" Content="" HorizontalAlignment="Left" Margin="485,612,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lbl_managerBill" Content="" HorizontalAlignment="Left" Margin="485,653,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="lbl_adminBill" Content="" HorizontalAlignment="Left" Margin="749,653,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.542"/>
-                <Label x:Name="lbl_mechanicBill" Content="" HorizontalAlignment="Left" Margin="485,653,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lbl_mechanicBill" Content="" HorizontalAlignment="Left" Margin="776,615,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="label3" Content="Salary Calculator" HorizontalAlignment="Left" Margin="950,106,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" FontSize="24" Width="204"/>
                 <ComboBox x:Name="cbx_salaryCalculator" ItemsSource="{Binding}" HorizontalAlignment="Right" Margin="0,172,102,0" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2">
                 </ComboBox>

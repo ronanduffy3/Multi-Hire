@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Windows.Markup.Localizer;
+using System.Collections.ObjectModel;
 
 namespace HireMockup
 {
@@ -19,13 +20,15 @@ namespace HireMockup
     public partial class MainWindow : Window
     {
         List<Contracts> contracts = new List<Contracts>();
-        public List<Customer> customerList = new List<Customer>();
-        public List<HireAsset> hireList = new List<HireAsset>();
+
+        public ObservableCollection<Customer> custList = new ObservableCollection<Customer>(DataAccessLayer.GetCustomerList());
+        public ObservableCollection<HireAsset> assetList = new ObservableCollection<HireAsset>(DataAccessLayer.GetHireList());
+
         public MainWindow()
         {
             InitializeComponent();
-            customerList = DataAccessLayer.GetCustomerList();
-            hireList = DataAccessLayer.GetHireList();
+            this.DataContext = this;
+
         }
 
 
@@ -216,6 +219,20 @@ namespace HireMockup
             contracts.Add(tempContract);
             lbx_contracts.ItemsSource = null;
             lbx_contracts.ItemsSource = contracts.ToList();
+        }
+
+        private void tbctrl_main_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(tbctrl_main.SelectedIndex == 2)
+            {
+                comboBox_allCustomers.ItemsSource = custList;
+                comboBox_allHireAssets.ItemsSource = assetList;
+            }
+            comboBox_allCustomers.DisplayMemberPath = "customerName";
+            comboBox_allCustomers.SelectedValuePath = "Id";
+            comboBox_allHireAssets.DisplayMemberPath = "hireName"; // Or whatever should be shown to the user in the combobox
+            comboBox_allHireAssets.SelectedValuePath = "hireId";
+
         }
     }
 }
