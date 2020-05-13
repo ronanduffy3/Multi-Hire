@@ -1,0 +1,22 @@
+﻿<Window x:Class="HireMockup.CreateHireAsset"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HireMockup"
+        mc:Ignorable="d"
+        Title="CreateHireAsset" Height="450" Width="800">
+    
+    
+    
+    <Grid>
+        <TextBlock Text="Create New Hire Asset" HorizontalAlignment="Left" Margin="15,15,5,5" VerticalAlignment="Top" FontSize="25"></TextBlock>
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="15,75,5,5">
+            <TextBox x:Name="tbx_assetName" Text="Hire Asset Name" Width="200" Height="30"></TextBox>
+            <TextBox x:Name="tbx_assetNumber" Text="Hire Asset Number e.g. (C149X)" Margin="0,15" Width="200" Height="30"></TextBox>
+            <TextBox x:Name="tbx_dailyRate" Text="Daily Rate" Margin="0" Width="200" Height="30"></TextBox>
+            <Button x:Name="bttn_submitHireAsset" Content="Submit Item" Margin="0,15" Width="200" Height="30" Click="bttn_submitHireAsset_Click"></Button>
+            <Button x:Name="bttn_cancel" Content="Cancel Object Creation" Margin="0" Width="200" Height="30" Click="bttn_cancel_Click"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,5 +1,6 @@
 ﻿using HireMockup.BLL;
 using HireMockup.DAL;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -40,15 +41,6 @@ namespace HireMockup
 
             dataGrid_Home.DataContext = null;
             dataGrid_Home.DataContext = query_results.DefaultView;
-        }
-
-        // Create a new Hire Asset
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            string hireName = tbx_addHireName.Text.ToString();
-            string hireType = tbx_addHireType.Text.ToString();
-            decimal hireDailyRate = Decimal.Parse(tbx_addHireDailyRate.Text);
-            DataAccessLayer.newHireAsset(hireName, hireType, hireDailyRate);
         }
 
         // Customer Search Function
@@ -171,7 +163,7 @@ namespace HireMockup
             }
             catch (SystemException ex)
             {
-                Console.WriteLine(ex.ToString());
+                MessageBox.Show(ex.ToString());
             }
         }
 
@@ -224,6 +216,12 @@ namespace HireMockup
             comboBox_allCustomers.SelectedValuePath = "Id";
             comboBox_allHireAssets.DisplayMemberPath = "hireName"; // Or whatever should be shown to the user in the combobox
             comboBox_allHireAssets.SelectedValuePath = "hireId";
+        }
+
+        private void bttn_addHireWindow_Click(object sender, RoutedEventArgs e)
+        {
+            var dlg = new CreateHireAsset { Owner = this };
+            dlg.ShowDialog();
         }
     }
 }

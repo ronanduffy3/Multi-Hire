@@ -17,16 +17,12 @@
                 <Label Content="MultiHire - Asset Management" HorizontalAlignment="Left" Margin="43,10,0,634" FontFamily="Sans Serif" FontSize="32" Width="442"/>
                 <TextBox x:Name="customerSearchBox" HorizontalAlignment="Left" Height="23" Margin="43,94,0,0" TextWrapping="Wrap" Text="Customer Search" VerticalAlignment="Top" Width="204"/>
                 <Button x:Name="btn_customerSearch" Content="Go" HorizontalAlignment="Left" Margin="286,94,0,0" VerticalAlignment="Top" Width="145" Height="23" Click="btn_customerSearch_Click"/>
-                <Button Content="Hire List" HorizontalAlignment="Left" Margin="308,196,0,0" VerticalAlignment="Top" Width="166" Click="Button_Click" Grid.Column="1"/>
-                <Button Content="Add Hire Equipment" HorizontalAlignment="Left" Margin="281,462,0,0" VerticalAlignment="Top" Width="193" Click="Button_Click_1" Grid.Column="1"/>
-                <Button x:Name="bttn_listCustomers" Content="Customer List" HorizontalAlignment="Left" Margin="308,144,0,0" VerticalAlignment="Top" Width="166" Click="bttn_listCustomers_Click" Grid.Column="1"/>
+                <Button Content="Hire List" HorizontalAlignment="Left" Margin="308,258,0,0" VerticalAlignment="Top" Width="166" Click="Button_Click" Grid.Column="1"/>
+                <Button x:Name="bttn_listCustomers" Content="Customer List" HorizontalAlignment="Left" Margin="308,206,0,0" VerticalAlignment="Top" Width="166" Click="bttn_listCustomers_Click" Grid.Column="1"/>
                 <DataGrid x:Name="dataGrid_Home" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="484" Margin="43,144,0,0" VerticalAlignment="Top" Width="919" Grid.ColumnSpan="2"/>
                 <TextBox x:Name="hireSearchBox" HorizontalAlignment="Left" Height="23" Margin="465,94,0,0" TextWrapping="Wrap" Text="Hire Asset Search" VerticalAlignment="Top" Width="260" Grid.ColumnSpan="2"/>
                 <Button x:Name="btn_hireSearch" Content="Go" HorizontalAlignment="Left" Margin="63,94,0,0" VerticalAlignment="Top" Width="145" Height="23" Click="btn_hireSearch_Click" Grid.Column="1"/>
-                <Label x:Name="label1" Content="Add New Hire Item" Grid.Column="1" HorizontalAlignment="Left" Margin="281,260,0,0" VerticalAlignment="Top" FontSize="24" Width="226" Grid.ColumnSpan="2"/>
-                <TextBox x:Name="tbx_addHireName" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="281,325,0,0" TextWrapping="Wrap" Text="Hire Name" VerticalAlignment="Top" Width="193"/>
-                <TextBox x:Name="tbx_addHireType" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="281,368,0,0" TextWrapping="Wrap" Text="Hire Asset Type" VerticalAlignment="Top" Width="193"/>
-                <TextBox x:Name="tbx_addHireDailyRate" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="281,414,0,0" TextWrapping="Wrap" Text="Daily Rate" VerticalAlignment="Top" Width="193"/>
+                <Button x:Name="bttn_addHireWindow" Content="Create Asset" HorizontalAlignment="Left" Margin="308,419,0,0" VerticalAlignment="Top" Width="166" Grid.Column="1" Click="bttn_addHireWindow_Click"/>
             </Grid>
         </TabItem>
         <TabItem Name="Employees" Header="Employees" Width="100">
@@ -49,7 +45,7 @@
                 <Label x:Name="lbl_hireBill" Content="" HorizontalAlignment="Left" Margin="485,612,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="lbl_managerBill" Content="" HorizontalAlignment="Left" Margin="485,653,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="lbl_adminBill" Content="" HorizontalAlignment="Left" Margin="749,653,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.542"/>
-                <Label x:Name="lbl_mechanicBill" Content="" HorizontalAlignment="Left" Margin="776,615,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lbl_mechanicBill" Content="" HorizontalAlignment="Left" Margin="749,615,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="label3" Content="Salary Calculator" HorizontalAlignment="Left" Margin="950,106,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" FontSize="24" Width="204"/>
                 <ComboBox x:Name="cbx_salaryCalculator" ItemsSource="{Binding}" HorizontalAlignment="Right" Margin="0,172,102,0" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2">
                 </ComboBox>
