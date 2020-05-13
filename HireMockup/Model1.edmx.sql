@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/15/2020 12:51:13
+-- Date Created: 05/13/2020 21:32:16
 -- Generated from EDMX file: C:\Users\user\source\repos\Multi-Hire\HireMockup\Model1.edmx
 -- --------------------------------------------------
 
@@ -22,6 +22,15 @@ GO
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Customers]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Customers];
+GO
+IF OBJECT_ID(N'[dbo].[Employees]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Employees];
+GO
+IF OBJECT_ID(N'[dbo].[HireAssets]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[HireAssets];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -31,7 +40,8 @@ GO
 CREATE TABLE [dbo].[HireAssets] (
     [hireID] int IDENTITY(1,1) NOT NULL,
     [hireName] nvarchar(max)  NOT NULL,
-    [dailyRate] nvarchar(max)  NOT NULL
+    [hireType] nchar(15)  NULL,
+    [dailyRate] decimal(19,4)  NULL
 );
 GO
 
@@ -40,8 +50,9 @@ CREATE TABLE [dbo].[Employees] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [employeeName] nvarchar(max)  NOT NULL,
     [employeeSurname] nvarchar(max)  NOT NULL,
-    [salary] nvarchar(max)  NOT NULL,
-    [administratorPriv] nvarchar(max)  NOT NULL
+    [weeklySalary] decimal(19,4)  NOT NULL,
+    [contactNumber] nchar(15)  NULL,
+    [jobTitle] nchar(15)  NULL
 );
 GO
 
@@ -52,7 +63,8 @@ CREATE TABLE [dbo].[Customers] (
     [customerSurname] nvarchar(max)  NOT NULL,
     [addressLine1] nvarchar(max)  NOT NULL,
     [addressLine2] nvarchar(max)  NOT NULL,
-    [customerBalance] nvarchar(max)  NOT NULL
+    [accountBalance] decimal(19,4)  NOT NULL,
+    [emailAddress] nvarchar(max)  NULL
 );
 GO
 

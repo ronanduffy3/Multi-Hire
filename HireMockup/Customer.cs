@@ -20,5 +20,6 @@ namespace HireMockup
         public string addressLine1 { get; set; }
         public string addressLine2 { get; set; }
         public decimal accountBalance { get; set; }
+        public string emailAddress { get; set; }
     }
 }

@@ -223,5 +223,11 @@ namespace HireMockup
             var dlg = new CreateHireAsset { Owner = this };
             dlg.ShowDialog();
         }
+
+        private void bttn_customerCreationDialog_Click(object sender, RoutedEventArgs e)
+        {
+            var dlg = new CreateCustomerWindow { Owner = this };
+            dlg.ShowDialog();
+        }
     }
 }

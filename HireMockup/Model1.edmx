@@ -15,6 +15,7 @@
           <Property Name="addressLine1" Type="nvarchar(max)" Nullable="false" />
           <Property Name="addressLine2" Type="nvarchar(max)" Nullable="false" />
           <Property Name="accountBalance" Type="money" Nullable="false" />
+          <Property Name="emailAddress" Type="nchar" MaxLength="25" />
         </EntityType>
         <EntityType Name="Employees">
           <Key>
@@ -80,6 +81,7 @@
           <Property Name="addressLine1" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="addressLine2" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="accountBalance" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="emailAddress" Type="String" MaxLength="25" FixedLength="true" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -112,7 +114,8 @@
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="IsTypeOf(Model1.Customer)">
         <MappingFragment StoreEntitySet="Customers">
-          <ScalarProperty Name="accountBalance" ColumnName="accountBalance" />
+          <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
+                <ScalarProperty Name="accountBalance" ColumnName="accountBalance" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="customerName" ColumnName="customerName" />
           <ScalarProperty Name="customerSurname" ColumnName="customerSurname" />

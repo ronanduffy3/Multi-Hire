@@ -39,6 +39,7 @@ namespace HireMockup.DAL
             tbl.Columns.Add("Address Line 1", typeof(string));
             tbl.Columns.Add("Address Line 2", typeof(string));
             tbl.Columns.Add("Account Balance", typeof(decimal));
+            tbl.Columns.Add("Customer Email", typeof(string));
 
             using (var context = new Model1Container())
             {
@@ -48,7 +49,7 @@ namespace HireMockup.DAL
                 // Loop over the customer objects in query and add each piece of data on a header in a row.
                 foreach (var customer in query)
                 {
-                    tbl.Rows.Add(customer.Id, customer.customerName, customer.customerSurname, customer.addressLine1, customer.addressLine2, customer.accountBalance);
+                    tbl.Rows.Add(customer.Id, customer.customerName, customer.customerSurname, customer.addressLine1, customer.addressLine2, customer.accountBalance, customer.emailAddress);
                 }
 
             }
@@ -128,6 +129,34 @@ namespace HireMockup.DAL
                 }
                 contractsList.Remove(contractToBill);
                 context.SaveChanges();
+            }
+        }
+
+        // Create a new customer
+        [Obsolete]
+        public static void newCustomer(string firstName, string lastName, string address1, string address2, string email)
+        {
+            decimal newAccountBalance = 0;
+            try
+            {
+                SqlConnection sql = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=C:\DATABASES\MULTIHIREDB.MDF;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                sql.Open();
+                SqlCommand sqlCommand = new SqlCommand("INSERT INTO Customers (customerName, customerSurname, addressLine1, addressLine2, accountBalance, emailAddress) VALUES (@customerName, @customerSurname, @addressLine1, @addressLine2, @accountBalance, @emailAddress)", sql);
+                sqlCommand.Parameters.Add("@customerName", firstName);
+                sqlCommand.Parameters.Add("@customerSurname", lastName);
+                sqlCommand.Parameters.Add("@addressLine1", address1);
+                sqlCommand.Parameters.Add("@addressLine2", address2);
+                sqlCommand.Parameters.Add("@accountBalance", newAccountBalance);
+                sqlCommand.Parameters.Add("@emailAddress", email);
+                sqlCommand.ExecuteNonQuery();
+            }
+            catch(SqlException ex)
+            {
+                MessageBox.Show($"Following error has occured: {ex}");
+            }
+            finally
+            {
+                MessageBox.Show("Item successfully added");
             }
         }
 

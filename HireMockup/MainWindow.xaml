@@ -23,6 +23,7 @@
                 <TextBox x:Name="hireSearchBox" HorizontalAlignment="Left" Height="23" Margin="465,94,0,0" TextWrapping="Wrap" Text="Hire Asset Search" VerticalAlignment="Top" Width="260" Grid.ColumnSpan="2"/>
                 <Button x:Name="btn_hireSearch" Content="Go" HorizontalAlignment="Left" Margin="63,94,0,0" VerticalAlignment="Top" Width="145" Height="23" Click="btn_hireSearch_Click" Grid.Column="1"/>
                 <Button x:Name="bttn_addHireWindow" Content="Create Asset" HorizontalAlignment="Left" Margin="308,419,0,0" VerticalAlignment="Top" Width="166" Grid.Column="1" Click="bttn_addHireWindow_Click"/>
+                <Button x:Name="bttn_customerCreationDialog" Content="Create Customer" Grid.Column="1" HorizontalAlignment="Left" Margin="308,472,0,0" VerticalAlignment="Top" Width="166" Click="bttn_customerCreationDialog_Click"/>
             </Grid>
         </TabItem>
         <TabItem Name="Employees" Header="Employees" Width="100">
