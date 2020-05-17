@@ -18,7 +18,7 @@ namespace HireMockup
     {
         private List<Contracts> contracts = new List<Contracts>();
 
-        public ObservableCollection<Customer> custList = new ObservableCollection<Customer>(DataAccessLayer.GetCustomerList());
+        public ObservableCollection<Customer> custList = new ObservableCollection<Customer>(CustomerDataAccess.GetCustomerList());
         public ObservableCollection<HireAsset> assetList = new ObservableCollection<HireAsset>(DataAccessLayer.GetHireList());
 
         public MainWindow()
@@ -37,7 +37,7 @@ namespace HireMockup
         // Method to list all customers
         private void bttn_listCustomers_Click(object sender, RoutedEventArgs e)
         {
-            DataTable query_results = DataAccessLayer.AllCustomers();
+            DataTable query_results = CustomerDataAccess.AllCustomers();
 
             dataGrid_Home.DataContext = null;
             dataGrid_Home.DataContext = query_results.DefaultView;
@@ -50,13 +50,13 @@ namespace HireMockup
             string[] query_strings = customerSearchBox.Text.ToString().Split(' ');
             if (query_strings[1] != null)
             {
-                DataTable query_results = DataAccessLayer.CustomerSearch(query_strings[0], query_strings[1]);
+                DataTable query_results = CustomerDataAccess.CustomerSearch(query_strings[0], query_strings[1]);
                 dataGrid_Home.DataContext = query_results.DefaultView;
             }
             else
             {
                 query_strings[1] = " ";
-                DataTable query_results = DataAccessLayer.CustomerSearch(query_strings[0], query_strings[1]);
+                DataTable query_results = CustomerDataAccess.CustomerSearch(query_strings[0], query_strings[1]);
                 dataGrid_Home.DataContext = query_results.DefaultView;
             }
         }
@@ -156,7 +156,7 @@ namespace HireMockup
             {
                 int.TryParse(tbx_ContractID.Text, out contractID);
                 // Call the billcustomer method 
-                DataAccessLayer.BillCustomer(contracts, contractID);
+                CustomerDataAccess.BillCustomer(contracts, contractID);
                 // Refresh list logic
                 lbx_contracts.ItemsSource = null;
                 lbx_contracts.ItemsSource = contracts.ToList();
@@ -228,6 +228,11 @@ namespace HireMockup
         {
             var dlg = new CreateCustomerWindow { Owner = this };
             dlg.ShowDialog();
+        }
+
+        private void dataGrid_Home_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
         }
     }
 }

@@ -19,7 +19,7 @@
                 <Button x:Name="btn_customerSearch" Content="Go" HorizontalAlignment="Left" Margin="286,94,0,0" VerticalAlignment="Top" Width="145" Height="23" Click="btn_customerSearch_Click"/>
                 <Button Content="Hire List" HorizontalAlignment="Left" Margin="308,258,0,0" VerticalAlignment="Top" Width="166" Click="Button_Click" Grid.Column="1"/>
                 <Button x:Name="bttn_listCustomers" Content="Customer List" HorizontalAlignment="Left" Margin="308,206,0,0" VerticalAlignment="Top" Width="166" Click="bttn_listCustomers_Click" Grid.Column="1"/>
-                <DataGrid x:Name="dataGrid_Home" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="484" Margin="43,144,0,0" VerticalAlignment="Top" Width="919" Grid.ColumnSpan="2"/>
+                <DataGrid x:Name="dataGrid_Home" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="484" Margin="43,144,0,0" VerticalAlignment="Top" Width="919" Grid.ColumnSpan="2" SelectionChanged="dataGrid_Home_SelectionChanged"/>
                 <TextBox x:Name="hireSearchBox" HorizontalAlignment="Left" Height="23" Margin="465,94,0,0" TextWrapping="Wrap" Text="Hire Asset Search" VerticalAlignment="Top" Width="260" Grid.ColumnSpan="2"/>
                 <Button x:Name="btn_hireSearch" Content="Go" HorizontalAlignment="Left" Margin="63,94,0,0" VerticalAlignment="Top" Width="145" Height="23" Click="btn_hireSearch_Click" Grid.Column="1"/>
                 <Button x:Name="bttn_addHireWindow" Content="Create Asset" HorizontalAlignment="Left" Margin="308,419,0,0" VerticalAlignment="Top" Width="166" Grid.Column="1" Click="bttn_addHireWindow_Click"/>

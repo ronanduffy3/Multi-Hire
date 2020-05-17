@@ -28,33 +28,7 @@ namespace HireMockup.DAL
         #region Customer Queries
 
         // Finds all customers
-        public static DataTable AllCustomers()
-        {
-            // Method that returns a datatable of all customers.
-            DataTable tbl = new DataTable();
-            
-            tbl.Columns.Add("Customer ID", typeof(int));
-            tbl.Columns.Add("Customer Name", typeof(string));
-            tbl.Columns.Add("Customer Surname", typeof(string));
-            tbl.Columns.Add("Address Line 1", typeof(string));
-            tbl.Columns.Add("Address Line 2", typeof(string));
-            tbl.Columns.Add("Account Balance", typeof(decimal));
-            tbl.Columns.Add("Customer Email", typeof(string));
-
-            using (var context = new Model1Container())
-            {
-                var query = (from customer in context.Customers
-                            select customer).ToList();
-
-                // Loop over the customer objects in query and add each piece of data on a header in a row.
-                foreach (var customer in query)
-                {
-                    tbl.Rows.Add(customer.Id, customer.customerName, customer.customerSurname, customer.addressLine1, customer.addressLine2, customer.accountBalance, customer.emailAddress);
-                }
-
-            }
-            return tbl;
-        }
+        
 
         // Method to facilitate search
         public static DataTable CustomerSearch(string custName, string custSurname)
