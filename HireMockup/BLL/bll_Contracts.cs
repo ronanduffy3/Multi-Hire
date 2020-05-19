@@ -34,7 +34,7 @@ namespace HireMockup.BLL
         public static List<Contracts> ListRandomContracts()
         { 
             Random rand = new Random();
-            var customerList = DataAccessLayer.GetCustomerList();
+            var customerList = CustomerDataAccess.GetCustomerList();
             var hireList = DataAccessLayer.GetHireList();
             List<Contracts> contractList = new List<Contracts>();
 

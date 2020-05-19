@@ -1,6 +1,7 @@
 ﻿using HireMockup.BLL;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -52,6 +53,24 @@ namespace HireMockup.DAL
             return tbl;
         }
         
+        public static ObservableCollection<Customer> getCustomers()
+        {
+            ObservableCollection<Customer> allCustomers = new ObservableCollection<Customer>();
+
+            using(var context = new Model1Container())
+            {
+                var query = (from customer in context.Customers
+                             select customer);
+
+                foreach(var customer in query)
+                {
+                    allCustomers.Add(customer);
+                    Console.WriteLine(customer.accountBalance);
+                }
+            }
+
+            return allCustomers;
+        }
 
         public static DataTable CustomerSearch(string custName, string custSurname)
         {
@@ -128,6 +147,34 @@ namespace HireMockup.DAL
                 context.SaveChanges();
             }
         }
+        #endregion
+
+        #region updates to the database
+        
+        public static void updateCustomer(Customer customer, string customerNamef, string customerSurnamef, string address1f, string address2f, string emailf)
+        {
+            var userToUpdate = new Customer
+            {
+                Id = customer.Id,
+                customerName = customerNamef,
+                customerSurname = customerSurnamef,
+                addressLine1 = address1f,
+                addressLine2 = address2f,
+                emailAddress = emailf
+            };
+            using(var db = new Model1Container())
+            {
+                db.Customers.Attach(userToUpdate);
+                db.Entry(userToUpdate).Property(x => x.customerName).IsModified = true;
+                db.Entry(userToUpdate).Property(x => x.customerSurname).IsModified = true;
+                db.Entry(userToUpdate).Property(x => x.addressLine1).IsModified = true;
+                db.Entry(userToUpdate).Property(x => x.addressLine2).IsModified = true;
+                db.Entry(userToUpdate).Property(x => x.emailAddress).IsModified = true;
+                db.SaveChanges();
+
+            }
+        }
+
         #endregion
 
         #region writes to database

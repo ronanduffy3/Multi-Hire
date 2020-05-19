@@ -21,10 +21,13 @@ namespace HireMockup
         public ObservableCollection<Customer> custList = new ObservableCollection<Customer>(CustomerDataAccess.GetCustomerList());
         public ObservableCollection<HireAsset> assetList = new ObservableCollection<HireAsset>(DataAccessLayer.GetHireList());
 
+        public ObservableCollection<Customer> fullcustomerList = new ObservableCollection<Customer>(CustomerDataAccess.getCustomers());
+
         public MainWindow()
         {
             InitializeComponent();
             this.DataContext = this;
+
         }
 
         // method to list all hire equipment
@@ -232,7 +235,20 @@ namespace HireMockup
 
         private void dataGrid_Home_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+
+        }
+
+        private void DataGrid_Loaded_1(object sender, RoutedEventArgs e)
+        {
+            devDataGrid.ItemsSource = fullcustomerList;
+        }
+
+        private void devDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Customer selectedCustomer = devDataGrid.SelectedItem as Customer;
+            var dlg = new UpdateCustomer(selectedCustomer) { Owner = this };
+            dlg.ShowDialog();
+                      
         }
     }
 }

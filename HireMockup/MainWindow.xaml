@@ -17,8 +17,6 @@
                 <Label Content="MultiHire - Asset Management" HorizontalAlignment="Left" Margin="43,10,0,634" FontFamily="Sans Serif" FontSize="32" Width="442"/>
                 <TextBox x:Name="customerSearchBox" HorizontalAlignment="Left" Height="23" Margin="43,94,0,0" TextWrapping="Wrap" Text="Customer Search" VerticalAlignment="Top" Width="204"/>
                 <Button x:Name="btn_customerSearch" Content="Go" HorizontalAlignment="Left" Margin="286,94,0,0" VerticalAlignment="Top" Width="145" Height="23" Click="btn_customerSearch_Click"/>
-                <Button Content="Hire List" HorizontalAlignment="Left" Margin="308,258,0,0" VerticalAlignment="Top" Width="166" Click="Button_Click" Grid.Column="1"/>
-                <Button x:Name="bttn_listCustomers" Content="Customer List" HorizontalAlignment="Left" Margin="308,206,0,0" VerticalAlignment="Top" Width="166" Click="bttn_listCustomers_Click" Grid.Column="1"/>
                 <DataGrid x:Name="dataGrid_Home" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="484" Margin="43,144,0,0" VerticalAlignment="Top" Width="919" Grid.ColumnSpan="2" SelectionChanged="dataGrid_Home_SelectionChanged"/>
                 <TextBox x:Name="hireSearchBox" HorizontalAlignment="Left" Height="23" Margin="465,94,0,0" TextWrapping="Wrap" Text="Hire Asset Search" VerticalAlignment="Top" Width="260" Grid.ColumnSpan="2"/>
                 <Button x:Name="btn_hireSearch" Content="Go" HorizontalAlignment="Left" Margin="63,94,0,0" VerticalAlignment="Top" Width="145" Height="23" Click="btn_hireSearch_Click" Grid.Column="1"/>
@@ -83,7 +81,14 @@
                 </StackPanel>
             </Grid>
         </TabItem>
+        <TabItem Name="developmentTab" Header="Customers" Width="100">
+          
+            <StackPanel Width="1100" Height="700">
+                <DataGrid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,10,10,10" x:Name="devDataGrid" AutoGenerateColumns="True" Loaded="DataGrid_Loaded_1" IsReadOnly="True" SelectionChanged="devDataGrid_SelectionChanged">
 
+                </DataGrid>
+            </StackPanel>
+        </TabItem>
 
 
     </TabControl>

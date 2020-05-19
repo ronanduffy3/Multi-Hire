@@ -43,7 +43,7 @@ namespace HireMockup
 
             if(emailIsOk == true)
             {
-                DataAccessLayer.newCustomer(customerName, customerSurname, customerAddress1, customerAddress2, email);
+                CustomerDataAccess.newCustomer(customerName, customerSurname, customerAddress1, customerAddress2, email);
                 DialogResult = false;
             }
             else
